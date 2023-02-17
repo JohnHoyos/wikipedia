@@ -9,7 +9,13 @@
 
     <ul>
         {% for entry in entries %}
-        <li><a href={{entry}}>{{entry}}</a></li>
+        <li><a href={{entry}}>{{entry}}</a>
+        <form action="{% url 'encyclopedia:editpage' %}" method="post" >
+            {% csrf_token%}
+            <input  type="submit" name="edititem" value="Edit {{entry}}">
+        </form> 
+           
+        </li>
            
         {% endfor %}
     </ul>

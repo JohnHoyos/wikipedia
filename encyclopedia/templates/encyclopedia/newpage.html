@@ -7,6 +7,18 @@
 {% block body %}
     <h1>New Page</h1>
 
-    New here!
+    <form action="{% url 'encyclopedia:newpage' %}" method="post" >   
+        {% csrf_token%} 
+        <label for="title">Title:</label>            
+        <input class="textarea" type="text" name="title" id="title" placeholder="Type new page's title">
+        <br></br> 
+        <label>Page's information:</label>
+        <br></br>  
+        <textarea id="textarea" name="content" placeholder="Describe the page"></textarea> 
+        <br></br>  
+        <input  type="submit" id="save" value="Save">
+        
+       
+    </form>
 
 {% endblock %}

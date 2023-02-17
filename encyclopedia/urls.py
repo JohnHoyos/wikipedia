@@ -7,5 +7,7 @@ urlpatterns = [
     path("random", views.random, name="random"),
     path("newpage", views.newpage, name="newpage"),
     path("find", views.find, name="find"),
-    path("<str:title>", views.entrypage, name="entrypage")    
+    path("editpage", views.editpage, name="editpage"),   
+    path("<str:title>", views.entrypage, name="entrypage"),
+      
 ]
