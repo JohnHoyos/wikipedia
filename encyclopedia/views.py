@@ -20,6 +20,8 @@ def newpage(request):
 
 def entrypage(request, title):
     data = util.get_entry(title)
+    if data == None:
+        data = "Request page was not found"
     return render(request, "encyclopedia/entrypage.html",{        
         'entry': markdowner.convert(data),
         "title": title
@@ -27,7 +29,9 @@ def entrypage(request, title):
 
 def find(request):   
     if request.method == "POST":        
-        data = util.get_entry(request.POST['search'])        
+        data = util.get_entry(request.POST['search']) 
+    if data == None:
+        data = "Request page was not found"       
     return render(request, "encyclopedia/entrypage.html",{        
         'entry': markdowner.convert(data),
         "title": request.POST['search']
