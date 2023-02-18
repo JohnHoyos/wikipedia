@@ -12,7 +12,8 @@
         <li><a href={{entry}}>{{entry}}</a>
         <form action="{% url 'encyclopedia:editpage' %}" method="post" >
             {% csrf_token%}
-            <input  type="submit" name="edititem" value="Edit {{entry}}">
+            <input type="hidden" name="edititem" value={{entry}}>
+            <input  type="submit" name="submit" value="Edit">
         </form> 
            
         </li>

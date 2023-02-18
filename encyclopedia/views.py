@@ -4,6 +4,7 @@ from django import forms
 from . import util
 from django.core.files.storage import default_storage
 import re
+from random import choice
 markdowner = Markdown()
 
 class NewForm(forms.Form):
@@ -74,4 +75,13 @@ def editpage(request):
     return render(request, "encyclopedia/editpage.html",{
         "title" : title,
         "content" : content
+    })
+def random(request):
+    title = choice(util.list_entries())
+    data = util.get_entry(title)
+    #import pdb;pdb.set_trace()
+    return render(request, "encyclopedia/random.html",{        
+        'entry': markdowner.convert(data),
+        "title": title
+        
     })
